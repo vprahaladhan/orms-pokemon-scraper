@@ -13,7 +13,7 @@ class Pokemon
       INSERT INTO pokemon (name, type) 
       VALUES (?, ?)
     SQL
-    pokemon = Pokemon.new(name: name, type: type, db: db)
+    pokemon = self.new(name: name, type: type, db: db)
     db.execute(sql, name, type)
     pokemon.id = db.execute("SELECT last_insert_rowid() FROM pokemon")[0][0]
   end
